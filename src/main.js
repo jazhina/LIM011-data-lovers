@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import POKEMON from './data/pokemon/pokemon.js';
 
 import {
@@ -16,14 +17,18 @@ const generarTemplatePokemones = (arr) => {
   let catalogoImagenes = '';
   arr.forEach((obj) => {
     catalogoImagenes += `
-    <div align="center">
+    <div class="pokemonModal" align="center">
     <img src = "${obj.imagen}"/>
-    <p> ${obj.identificador} ${obj.nombre}</p>
+    <h1> ${obj.identificador}</h1><p>  ${obj.nombre}</p>
     </div>
     `;
   });
+  const pokemonPintar=document.querySelectorAll(pokemonModal)
   return catalogoImagenes;
 };
+
+const divElement=document.createElement("div");
+divElement.setAttribute()
 
 const template = generarTemplatePokemones(traerDataPokemon(POKEMON));
 
@@ -42,12 +47,20 @@ inputBuscaPokemon.addEventListener('click', () => {
   pintarPokemonesEnPantalla(pintarMuestraPokemon, contenedorPokemons);
 });
 
-const desple = document.getElementById('tipoPokemones');
-desple.addEventListener('click', () => {
-  const tPokemones = desple.value;
-  const arregloFiltrado = traerDataPokemon(desple((POKEMON), tPokemones));
+const filtrarTipoDePokemones = document.getElementById('tipoPokemones');
+filtrarTipoDePokemones.addEventListener('change', () => {
+  const tPokemones = filtrarTipoDePokemones.value;
+  const arregloFiltrado = traerDataPokemon(filtrarPokemones((POKEMON), tPokemones));
   const pintarArregloFiltrado = generarTemplatePokemones(arregloFiltrado);
   pintarPokemonesEnPantalla(pintarArregloFiltrado, contenedorPokemons);
+});
+const desple = document.getElementById('desple');
+desple.addEventListener('click', (event) => {
+  const tPokemones = event.target.id;
+  const arregloFiltrado = traerDataPokemon(filtrarPokemones((POKEMON), tPokemones));
+  const pintarArregloFiltrado = generarTemplatePokemones(arregloFiltrado);
+  pintarPokemonesEnPantalla(pintarArregloFiltrado, contenedorPokemons);
+  // console.log(pintarPokemonesEnPantalla);
 });
 
 for (let i = 0; i < radioInput.length; i += 1) {
