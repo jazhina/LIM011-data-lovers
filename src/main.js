@@ -8,8 +8,10 @@ import {
   filtrarPokemones,
   mostrarTop,
   buscarPokemon,
-  // buscarPokemonId
 } from './data.js';
+
+const contenedorPokemons = document.querySelector('#contenedor-pokemons');
+const contenedorPokemonsModal=document.querySelector("#pantalla-Modal");
 
 const radioInput = document.querySelectorAll('input[name=ordena]');
 
@@ -60,7 +62,29 @@ const generarTemplatePokemones = (arr) => {
     document.querySelector('#contenedor-pokemons').appendChild(containerElements(obj));
   });
 };
+    catalogoImagenes += `
+    <div class="pokemonModal" align="center">
+    <img src = "${obj.imagen}"/>
+    <h1>${obj.identificador}</h1><p>${obj.nombre}</p>
+    </div>
+    `;
+  });
+  
+  return catalogoImagenes;
+};
 
+const generarTemplatePokemonesModal = (obj) => {
+  `
+    <div align="center">
+    <img src = "${obj.imagen}"/>
+    <h1> ${obj.identificador}</h1><p>  ${obj.nombre}</p>
+    <p> ${obj.altura}</p><p> ${obj.peso}</p>
+    </div>
+    `;
+};
+
+const template = generarTemplatePokemones(traerDataPokemon(POKEMON));
+const templateModal= generarTemplatePokemonesModal(traerDataPokemonModal(POKEMON));
 
 // const generarTemplatePokemonesModal = (obj) => {
 //   `
@@ -102,6 +126,29 @@ generarTemplatePokemones(traerDataPokemon(POKEMON));
 // const pintarPokemonBuscadoModal = generarTemplatePokemonesModal(pokemonBuscadoPorId);
 // pintarPokemonesEnPantallaModal(pintarPokemonBuscadoModal, '#miModal');
 
+// const pintarPokemonesEnPantallaModal = (plantilla, nodoDom) => {
+//   nodoDom.innerHTML = '';
+//   nodoDom.innerHTML = plantilla;
+// };
+
+// pintarPokemonesEnPantalla(template, contenedorPokemons);
+// pintarPokemonesEnPantallaModal(templateModal, contenedorPokemonsModal);
+
+const clasePokemonModal=document.querySelectorAll('.pokemonModal')
+console.log(clasePokemonModal)
+
+for (let i = 0; i < clasePokemonModal.length; i += 1) {
+  clasePokemonModal[i].addEventListener('click', (event) => {
+    const idPokemonABuscar = clasePokemonModal[i].children[1].firstChild;
+    console.log(idPokemonABuscar);
+    console.log(buscarPokemonId)
+    const pokemonBuscadoPorId = traerDataPokemonModal(buscarPokemonId(POKEMON, idPokemonABuscar));
+    console.log(pokemonBuscadoPorId)
+    // const pintarPokemonBuscadoModal = generarTemplatePokemonesModal(pokemonBuscadoPorId);
+    // pintarPokemonesEnPantallaModal(pintarPokemonBuscadoModal, contenedorPokemonsModal);
+  });
+};
+
 
 const inputBuscaPokemon = document.getElementById('buscaPokemon');
 inputBuscaPokemon.addEventListener('click', () => {
@@ -111,9 +158,23 @@ inputBuscaPokemon.addEventListener('click', () => {
   generarTemplatePokemones(muestraPokemon);
 });
 
+//   const muestraPokemon = traerDataPokemon(buscarPokemonNombre((POKEMON), nombrePokemonBuscar));
+//   const pintarMuestraPokemon = generarTemplatePokemones(muestraPokemon);
+//   pintarPokemonesEnPantalla(pintarMuestraPokemon, contenedorPokemons);
+// });
+
+// const filtrarTipoDePokemones = document.getElementById('tipoPokemones');
+// filtrarTipoDePokemones.addEventListener('change', () => {
+//   const tPokemones = filtrarTipoDePokemones.value;
+//   const arregloFiltrado = traerDataPokemon(filtrarPokemones((POKEMON), tPokemones));
+//   const pintarArregloFiltrado = generarTemplatePokemones(arregloFiltrado);
+//   pintarPokemonesEnPantalla(pintarArregloFiltrado, contenedorPokemons);
+// });
+
 const desple = document.getElementById('desple');
 desple.addEventListener('click', (event) => {
   const tPokemones = event.target.id;
+  console.log(tPokemones)
   const arregloFiltrado = traerDataPokemon(filtrarPokemones((POKEMON), tPokemones));
   document.querySelector('#contenedor-pokemons').innerHTML = '';
   generarTemplatePokemones(arregloFiltrado);
@@ -133,3 +194,9 @@ btnBuscarTop10.addEventListener('click', () => {
   document.querySelector('#contenedor-pokemons').innerHTML = '';
   generarTemplatePokemones(arregloMuestraTop);
 });
+
+// const pElement=document.createElement("p");
+// const pElement1= `<p></p>`;
+
+//document.getElementById("example").appendChild(pElement);
+//document.getElementById("example").innerHTML=pElement
