@@ -10,6 +10,7 @@ export const traerDataPokemon = (arr) => {
   return newArray;
 };
 
+
 // export const traerDataPokemonModal = (arr) => {
 // const newArray = [];
 // for (let i = 0; i < arr.length; i += 1) {
@@ -18,6 +19,22 @@ export const traerDataPokemon = (arr) => {
 // }
 // return newArray;
 // };
+
+export const traerDataPokemonModal = (arr) => {
+  const newArray = [];
+  for (let i = 0; i < arr.length; i += 1) {
+    newArray.push(
+      {
+        identificador: arr[i].id,
+        nombre: arr[i].name,
+        imagen: arr[i].img,
+        altura: arr[i].height,
+        peso: arr[i].weight,
+      },
+    );
+  }
+  return newArray;
+};
 
 export const ordenarAscOdescData = (arr, string) => {
   if (string === 'orAsc') {
@@ -51,6 +68,7 @@ export const filtrarPokemones = (arr, tPokemones) => {
   return arregloFiltradoPokemones;
 };
 
+
 export const mostrarTop = (arr) => {
   arr.sort((p1, p2) => ((p1.spawn_chance > p2.spawn_chance) ? -1 : 1));
   const arrTop = arr.slice(0, 10);
@@ -62,9 +80,20 @@ export const buscarPokemon = (arr, nombrePokemonBuscar) => {
   arrBuscaPokemon.push(arr.find((elemento) => elemento.name === nombrePokemonBuscar));
   return arrBuscaPokemon;
 };
-
-// export const buscarPokemonId = (arr, idPokemonBuscar) => {
+// export const buscarPokemonNombre = (arr, nombrePokemonBuscar) => {
 //   const arrBuscaPokemon = [];
-//   arrBuscaPokemon.push(arr.find((elemento) => elemento.id === idPokemonBuscar));
+//   arrBuscaPokemon.push(arr.find((elemento) => elemento.name === nombrePokemonBuscar));
 //   return arrBuscaPokemon;
-// },
+// };
+
+// // export const buscarPokemonId = (arr, idPokemonBuscar) => {
+// //   const arrBuscaPokemon = [];
+// //   arrBuscaPokemon.push(arr.find((elemento) => elemento.id === idPokemonBuscar));
+// //   return arrBuscaPokemon;
+// // },
+
+// export const buscarPokemonId = (arr, idPokemonABuscar) => {
+//   const arrBuscaPokemon = [];
+//   arrBuscaPokemon.push(arr.find((elemento) => elemento.id === idPokemonABuscar));
+//   return arrBuscaPokemon;
+//  };
