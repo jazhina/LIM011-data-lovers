@@ -30,8 +30,9 @@ const radioInput = document.querySelectorAll('input[name=ordena]');
 const containerElements = (obj) => {
   const divElement = document.createElement('div');
   divElement.innerHTML = `
-  <img src = "${obj.imagen}"/>
-  <h1>${obj.identificador}</h1><p>${obj.nombre}</p>
+    <img class = "imagenPokemon" src = "${obj.imagen}"/>
+    <h1>${obj.identificador}</h1>
+    <p>${obj.nombre}</p>
   `;
   divElement.addEventListener('click', () => {
     const divElem = document.createElement('div');
@@ -39,8 +40,8 @@ const containerElements = (obj) => {
     divElem.innerHTML = `
     <div>
       <a href="#close" title="Close" class="close">X</a>
-      <h2>${obj.nombre}</h2>
-      <p>${obj.identificador}</p>
+      <h2>${obj.nombre.toUpperCase()}</h2> 
+      <img class = "imagenPokemon" src = "${obj.imagen}"/>
       <div id="prevolucion"></div>
     </div> 
     `;
@@ -60,7 +61,6 @@ const generarTemplatePokemones = (arr) => {
     document.querySelector('#contenedor-pokemons').appendChild(containerElements(obj));
   });
 };
-
 
 // const generarTemplatePokemonesModal = (obj) => {
 //   `
