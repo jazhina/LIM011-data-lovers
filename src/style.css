@@ -156,7 +156,6 @@ h2{
 	left: 0;
 	background: rgba(0,0,0,0.8);
 	z-index: 99999;
-	display:none;
 	-webkit-transition: opacity 400ms ease-in;
 	-moz-transition: opacity 400ms ease-in;
 	transition: opacity 400ms ease-in;

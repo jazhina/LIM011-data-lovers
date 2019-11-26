@@ -24,18 +24,16 @@ const containerElements = (obj) => {
     divElem.classList.add('modalDialog');
     divElem.innerHTML = `
     <div>
-      <a href="#close" title="Close" class="close">X</a>
+      <a href="#" title="Close" class="close">X</a>
       <h2>${obj.nombre.toUpperCase()}</h2> 
       <img class = "imagenPokemon" src = "${obj.imagen}"/>
       <div id="prevolucion"></div>
     </div> 
     `;
-
-    divElem.style.display = 'block';
-    // divElem.addEventListener('click', () => {
-    //   divElem.style.display = 'none';
-    // });
     divElement.appendChild(divElem);
+    divElem.style.display = 'block';
+    divElem.addEventListener('click', () => {
+    });
   });
   return divElement;
 };
