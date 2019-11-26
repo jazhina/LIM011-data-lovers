@@ -5,33 +5,13 @@ export const traerDataPokemon = (arr) => {
       identificador: arr[i].id,
       nombre: arr[i].name,
       imagen: arr[i].img,
+      altura: arr[i].height,
+      peso: arr[i].weight,
+      tipo: arr[i].type,
+      caramelos: arr[i].candy_count,
+      multiplicador: arr[i].multipliers,
+      debilidades: arr[i].weaknesses,
     });
-  }
-  return newArray;
-};
-
-
-// export const traerDataPokemonModal = (arr) => {
-// const newArray = [];
-// for (let i = 0; i < arr.length; i += 1) {
-// newArray.push({ identificador: arr[i].id, nombre: arr[i].name, imagen: arr[i].img,
-// altura: arr[i].height, peso: arr[i].weight });
-// }
-// return newArray;
-// };
-
-export const traerDataPokemonModal = (arr) => {
-  const newArray = [];
-  for (let i = 0; i < arr.length; i += 1) {
-    newArray.push(
-      {
-        identificador: arr[i].id,
-        nombre: arr[i].name,
-        imagen: arr[i].img,
-        altura: arr[i].height,
-        peso: arr[i].weight,
-      },
-    );
   }
   return newArray;
 };

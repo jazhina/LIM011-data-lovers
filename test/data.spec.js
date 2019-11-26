@@ -48,7 +48,10 @@ const input = [
     spawn_chance: 0.253,
   },
 ];
+<<<<<<< HEAD
 
+=======
+>>>>>>> 167442c11ef30808a97d23b196dca40bdc549f36
 describe('traerDataPokemon', () => {
   it('debería ser una función', () => {
     expect(typeof traerDataPokemon).toBe('function');
@@ -89,7 +92,11 @@ describe('buscarPokemon', () => {
     ];
     expect(buscarPokemon(input, 'Bulbasaur')).toEqual(buscar);
   });
+<<<<<<< HEAD
 });
+=======
+});   
+>>>>>>> 167442c11ef30808a97d23b196dca40bdc549f36
 describe('ordenarAscOdescData', () => {
   it('debería ser una función', () => {
     expect(typeof ordenarAscOdescData).toBe('function');
@@ -99,6 +106,7 @@ describe('ordenarAscOdescData', () => {
     let salida;
     let string;
     if (string === 'orAsc') {
+<<<<<<< HEAD
       salida = [
         {
           id: 1,
@@ -160,6 +168,11 @@ describe('ordenarAscOdescData', () => {
         spawn_chance: 0.69,
       },
     ];
+=======
+      salida = [{ id: 1, name: 'Bulbasaur', img: 'http://www.serebii.net/pokemongo/pokemon/001.png' }, { id: 2, name: 'Ivysaur', img: 'http://www.serebii.net/pokemongo/pokemon/002.png' }, { id: 3, name: 'Venusaur', img: 'http://www.serebii.net/pokemongo/pokemon/003.png' }];
+    }
+    salida = [{ id: 3, name: 'Venusaur', img: 'http://www.serebii.net/pokemongo/pokemon/003.png' }, { id: 2, name: 'Ivysaur', img: 'http://www.serebii.net/pokemongo/pokemon/002.png' }, { id: 1, name: 'Bulbasaur', img: 'http://www.serebii.net/pokemongo/pokemon/001.png' }];
+>>>>>>> 167442c11ef30808a97d23b196dca40bdc549f36
     expect(ordenarAscOdescData(input)).toEqual(salida);
   });
 });
@@ -243,20 +256,34 @@ describe('mostrarTop', () => {
         img: 'http://www.serebii.net/pokemongo/pokemon/012.png',
         spawn_chance: 0.022,
       }];
+<<<<<<< HEAD
     const fin = [
       {
+=======
+      
+    const salida = [
+      { 
+>>>>>>> 167442c11ef30808a97d23b196dca40bdc549f36
         id: 10,
         name: 'Caterpie',
         img: 'http://www.serebii.net/pokemongo/pokemon/010.png',
         spawn_chance: 3.032,
       },
+<<<<<<< HEAD
       {
+=======
+      { 
+>>>>>>> 167442c11ef30808a97d23b196dca40bdc549f36
         id: 1,
         name: 'Bulbasaur',
         img: 'http://www.serebii.net/pokemongo/pokemon/001.png',
         spawn_chance: 0.69,
       },
+<<<<<<< HEAD
       {
+=======
+      { 
+>>>>>>> 167442c11ef30808a97d23b196dca40bdc549f36
         id: 7,
         name: 'Squirtle',
         img: 'http://www.serebii.net/pokemongo/pokemon/007.png',
@@ -303,8 +330,14 @@ describe('mostrarTop', () => {
         name: 'Charmeleon',
         img: 'http://www.serebii.net/pokemongo/pokemon/005.png',
         spawn_chance: 0.012,
+<<<<<<< HEAD
       },
     ];
     expect(mostrarTop(entrada)).toEqual(fin);
+=======
+      }
+    ];
+    expect(mostrarTop(entrada)).toEqual(salida);
+>>>>>>> 167442c11ef30808a97d23b196dca40bdc549f36
   });
 });

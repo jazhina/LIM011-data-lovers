@@ -3,7 +3,6 @@ import POKEMON from './data/pokemon/pokemon.js';
 
 import {
   traerDataPokemon,
-  // traerDataPokemonModal,
   ordenarAscOdescData,
   filtrarPokemones,
   mostrarTop,
@@ -15,25 +14,58 @@ const radioInput = document.querySelectorAll('input[name=ordena]');
 const containerElements = (obj) => {
   const divElement = document.createElement('div');
   divElement.innerHTML = `
-    <img class = "imagenPokemon" src = "${obj.imagen}"/>
-    <h1>${obj.identificador}</h1>
-    <p>${obj.nombre}</p>
+  <img class="imagenPokemon" src = "${obj.imagen}"/>
+  <h1>${obj.identificador}</h1><p>${obj.nombre}</p>
   `;
   divElement.addEventListener('click', () => {
     const divElem = document.createElement('div');
     divElem.classList.add('modalDialog');
-    divElem.innerHTML = `
+    if (obj.multiplicador === null || obj.caramelos === undefined) {
+      divElem.innerHTML = `
     <div>
-      <a href="#" title="Close" class="close">X</a>
-      <h2>${obj.nombre.toUpperCase()}</h2> 
-      <img class = "imagenPokemon" src = "${obj.imagen}"/>
-      <div id="prevolucion"></div>
+      <a href = "#close" title = "Close" class = "close">X</a>
+      <h2>${obj.nombre.toUpperCase()}</h2>
+      <img class="imagenPokemon" src = "${obj.imagen}"/>
+      <seccion>
+      <p>Peso: ${obj.peso}  Altura: ${obj.altura} Tipo: ${obj.tipo}</p>
+      <p>Caramelos: No tiene asignada esta propiedad</p>
+      <p>Multiplicador: No tiene asignado un multiplicador</p>
+      </seccion>
+      <seccion>
+      <div id="prevolucion">
+        <p>Sig. evolucion: ${obj.siguiente_evolucion}</p>
+      </div>
+      </seccion>
+    </div>
+    `;
+    } else {
+      divElem.innerHTML = `
+    <div>
+      <a href = "#close" title = "Close" class = "close">X</a>
+      <h2>${obj.nombre.toUpperCase()}</h2>
+      <img class="imagenPokemon" src = "${obj.imagen}"/>
+      <seccion>
+      <p>Peso: ${obj.peso}  Altura: ${obj.altura}</p>
+      <p>Tipo: ${obj.tipo}</p>
+      <p>Caramelos: ${obj.caramelos}</p>
+      <p>Multiplicador: ${obj.multiplicador}</p>
+      </seccion>
+      <seccion>
+      <div id="prevolucion">
+      <p>Sig. evolucion: ${obj.siguiente_evolucion}</p>
+      </div>
+      </seccion>
     </div> 
     `;
-    divElement.appendChild(divElem);
+    }
+
+    document.getElementById('contenedor-modal').appendChild(divElem);
     divElem.style.display = 'block';
-    divElem.addEventListener('click', () => {
+    divElem.querySelector('.close').addEventListener('click', () => {
+      divElem.classList.remove('modalDialog');
+      document.querySelector('#contenedor-modal').innerHTML = '';
     });
+  // divElement.appendChild(divElem);
   });
   return divElement;
 };
@@ -44,18 +76,9 @@ const generarTemplatePokemones = (arr) => {
   });
 };
 
-// const generarTemplatePokemonesModal = (obj) => {
-//   `
-//     <div align="center">
-//     <img src = "${obj.imagen}"/>
-//     <h1> ${obj.identificador}</h1><p>${obj.nombre}</p>
-//     <p> ${obj.altura}</p><p> ${obj.peso}</p>
-//     </div>
-//     `;
-// };
-
 generarTemplatePokemones(traerDataPokemon(POKEMON));
-// Buscar Pokemon
+
+
 const inputBuscaPokemon = document.getElementById('buscaPokemon');
 inputBuscaPokemon.addEventListener('click', () => {
   const nombrePokemonBuscar = document.getElementById('buscar').value;
