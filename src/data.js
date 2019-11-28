@@ -11,8 +11,12 @@ export const traerDataPokemon = (arr) => {
       caramelos: arr[i].candy_count,
       multiplicador: arr[i].multipliers,
       debilidades: arr[i].weaknesses,
+      pre_evolucion: arr[i].prev_evolution,
+      siguiente_evolucion: arr[i].next_evolution,
+      candyname: arr[i].candy,
     });
   }
+  console.log(newArray[2].candyname);
   return newArray;
 };
 
@@ -60,20 +64,11 @@ export const buscarPokemon = (arr, nombrePokemonBuscar) => {
   arrBuscaPokemon.push(arr.find((elemento) => elemento.name === nombrePokemonBuscar));
   return arrBuscaPokemon;
 };
-// export const buscarPokemonNombre = (arr, nombrePokemonBuscar) => {
-//   const arrBuscaPokemon = [];
-//   arrBuscaPokemon.push(arr.find((elemento) => elemento.name === nombrePokemonBuscar));
-//   return arrBuscaPokemon;
-// };
 
-// // export const buscarPokemonId = (arr, idPokemonBuscar) => {
-// //   const arrBuscaPokemon = [];
-// //   arrBuscaPokemon.push(arr.find((elemento) => elemento.id === idPokemonBuscar));
-// //   return arrBuscaPokemon;
-// // },
+export const evolucionPokemon = (data) => {
+  let pre = data.map(a => a.prev_evolution);
+  console.log(pre);
 
-// export const buscarPokemonId = (arr, idPokemonABuscar) => {
-//   const arrBuscaPokemon = [];
-//   arrBuscaPokemon.push(arr.find((elemento) => elemento.id === idPokemonABuscar));
-//   return arrBuscaPokemon;
-//  };
+  let next = data.map(a => a.next_evolution);
+  console.log(next);
+};

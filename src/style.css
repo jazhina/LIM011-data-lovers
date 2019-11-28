@@ -159,7 +159,7 @@ h2{
 	pointer-events: auto;
 }
 .modalDialog > div {
-	width: 400px;
+	width: 600px;
 	position: relative;
 	margin: 10% auto;
 	padding: 5px 20px 13px 20px;
@@ -194,4 +194,18 @@ h2{
 .close:hover {
      background: #00d9ff;
      }
+.seccionleft{
+    width: 300px;
+    height: 200px;
+}
+.seccionleft >h2 {
+   position: relative;
+}
+.seccionrigth {
+    float: right;
+    width: 200px;
+    height: 200px;
+    background-color: green;
+}
   /* === FIN MODAL POKEMON== */
+

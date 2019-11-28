@@ -7,6 +7,8 @@ import {
   filtrarPokemones,
   mostrarTop,
   buscarPokemon,
+  // searchPokemon,
+  evolucionPokemon,
 } from './data.js';
 
 const radioInput = document.querySelectorAll('input[name=ordena]');
@@ -24,16 +26,18 @@ const containerElements = (obj) => {
       divElem.innerHTML = `
     <div>
       <a href = "#close" title = "Close" class = "close">X</a>
+      <seccion class = "seccionleft" >
       <h2>${obj.nombre.toUpperCase()}</h2>
-      <img class="imagenPokemon" src = "${obj.imagen}"/>
-      <seccion>
+      <img  src = "${obj.imagen}"/>
+      </seccion>
+      <seccion class = "seccionrigth">
       <p>Peso: ${obj.peso}  Altura: ${obj.altura} Tipo: ${obj.tipo}</p>
       <p>Caramelos: No tiene asignada esta propiedad</p>
       <p>Multiplicador: No tiene asignado un multiplicador</p>
       </seccion>
       <seccion>
       <div id="prevolucion">
-        <p>Sig. evolucion: ${obj.siguiente_evolucion}</p>
+        <p>Sig. evolucion: ${obj.nombre}</p>
       </div>
       </seccion>
     </div>
@@ -50,9 +54,9 @@ const containerElements = (obj) => {
       <p>Caramelos: ${obj.caramelos}</p>
       <p>Multiplicador: ${obj.multiplicador}</p>
       </seccion>
-      <seccion>
+      <seccion id="evolucion">
       <div id="prevolucion">
-      <p>Sig. evolucion: ${obj.siguiente_evolucion}</p>
+      <p>Sig. evolucion: ${obj.siguiente_evolucion[0]}</p>
       </div>
       </seccion>
     </div> 
@@ -69,6 +73,10 @@ const containerElements = (obj) => {
   });
   return divElement;
 };
+
+// const evolucion = () => {
+//   console.log(searchPokemon(POKEMON, '003'));
+// }
 
 const generarTemplatePokemones = (arr) => {
   arr.forEach((obj) => {
@@ -109,3 +117,5 @@ btnBuscarTop10.addEventListener('click', () => {
   document.querySelector('#contenedor-pokemons').innerHTML = '';
   generarTemplatePokemones(arregloMuestraTop);
 });
+
+console.log (evolucionPokemon(POKEMON));
