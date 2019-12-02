@@ -7,67 +7,66 @@ import {
   filtrarPokemones,
   mostrarTop,
   buscarPokemon,
-  // searchPokemon,
-  evolucionPokemon,
+  buscador,
+  filtrarPorCandy,
 } from './data.js';
 
 const radioInput = document.querySelectorAll('input[name=ordena]');
 
-const containerElements = (obj) => {
-  const divElement = document.createElement('div');
+
+const containerElements= (obj) => {
+  const divElement = document.createElement("div");
+  const idPok=obj.identificador;
+  //filtrarPokemonesId
+  
   divElement.innerHTML = `
   <img class="imagenPokemon" src = "${obj.imagen}"/>
   <h1>${obj.identificador}</h1><p>${obj.nombre}</p>
   `;
+  
   divElement.addEventListener('click', () => {
+    
+    //console.log(filtrarPorCandy((POKEMON),varCandy))
     const divElem = document.createElement('div');
+    
     divElem.classList.add('modalDialog');
-    if (obj.multiplicador === null || obj.caramelos === undefined) {
-      divElem.innerHTML = `
+    const varCandy=obj.caramelos;
+    console.log(varCandy);
+    divElem.innerHTML = `
     <div>
       <a href = "#close" title = "Close" class = "close">X</a>
-      <seccion class = "seccionleft" >
-      <h2>${obj.nombre.toUpperCase()}</h2>
-      <img  src = "${obj.imagen}"/>
-      </seccion>
-      <seccion class = "seccionrigth">
-      <p>Peso: ${obj.peso}  Altura: ${obj.altura} Tipo: ${obj.tipo}</p>
-      <p>Caramelos: No tiene asignada esta propiedad</p>
-      <p>Multiplicador: No tiene asignado un multiplicador</p>
-      </seccion>
       <seccion>
-      <div id="prevolucion">
-        <p>Sig. evolucion: ${obj.nombre}</p>
-      </div>
-      </seccion>
-    </div>
-    `;
-    } else {
-      divElem.innerHTML = `
-    <div>
-      <a href = "#close" title = "Close" class = "close">X</a>
       <h2>${obj.nombre.toUpperCase()}</h2>
       <img class="imagenPokemon" src = "${obj.imagen}"/>
+      </seccion>
       <seccion>
-      <p>Peso: ${obj.peso}  Altura: ${obj.altura}</p>
-      <p>Tipo: ${obj.tipo}</p>
-      <p>Caramelos: ${obj.caramelos}</p>
+      <p>Peso: ${obj.peso}  Altura: ${obj.altura} Tipo: ${obj.tipo}</p>
+      <p>Caramelos: ${obj.cant_caramelos}</p> 
       <p>Multiplicador: ${obj.multiplicador}</p>
       </seccion>
-      <seccion id="evolucion">
-      <div id="prevolucion">
-      <p>Sig. evolucion: ${obj.siguiente_evolucion[0]}</p>
-      </div>
+      <seccion id="evoluciones">
       </seccion>
     </div> 
     `;
-    }
+    
+    document.getElementById("contenedor-modal").appendChild(divElem);
 
-    document.getElementById('contenedor-modal').appendChild(divElem);
+    const arregloCaramelos = filtrarPorCandy((POKEMON), obj.caramelos);
+    
+    if(obj.caramelos !== undefined){
+      for (let i=0; i< arregloCaramelos.length; i++){
+        
+        document.getElementById("evoluciones").innerHTML += ` 
+        <img class="imagenPokemon" src="${arregloCaramelos[i]}"/>
+        `;
+        document.querySelector("#contenedor-modal").appendChild(divElem);
+      }
+    };
+
     divElem.style.display = 'block';
     divElem.querySelector('.close').addEventListener('click', () => {
-      divElem.classList.remove('modalDialog');
-      document.querySelector('#contenedor-modal').innerHTML = '';
+    divElem.classList.remove("modalDialog");
+    document.querySelector('#contenedor-modal').innerHTML='';
     });
   // divElement.appendChild(divElem);
   });
@@ -93,7 +92,8 @@ inputBuscaPokemon.addEventListener('click', () => {
   const muestraPokemon = traerDataPokemon(buscarPokemon((POKEMON), nombrePokemonBuscar));
   generarTemplatePokemones(muestraPokemon);
 });
-// Filtrar Pokemons
+
+
 const desple = document.getElementById('desple');
 desple.addEventListener('click', (event) => {
   const tPokemones = event.target.id;
@@ -118,4 +118,10 @@ btnBuscarTop10.addEventListener('click', () => {
   generarTemplatePokemones(arregloMuestraTop);
 });
 
-console.log (evolucionPokemon(POKEMON));
+const buscaNombre=document.getElementById('buscar');
+buscaNombre.addEventListener('input',(event) => {
+  const pokeBuscado = traerDataPokemon(buscador((POKEMON), event.target.value));
+  document.querySelector('#contenedor-pokemons').innerHTML='';
+  generarTemplatePokemones(pokeBuscado);
+})
+
