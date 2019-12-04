@@ -7,8 +7,8 @@ import {
   filtrarPokemones,
   mostrarTop,
   buscarPokemon,
-  // searchPokemon,
-  evolucionPokemon,
+  buscador,
+  filtrarPorCandy,
 } from './data.js';
 
 const radioInput = document.querySelectorAll('input[name=ordena]');
@@ -20,6 +20,8 @@ const containerElements = (obj) => {
   <h1>${obj.identificador}</h1><p>${obj.nombre}</p>
   `;
   divElement.addEventListener('click', () => {
+    
+    //console.log(filtrarPorCandy((POKEMON),varCandy))
     const divElem = document.createElement('div');
     divElem.classList.add('modalDialog');
     if (obj.multiplicador === null || obj.caramelos === undefined) {
@@ -93,7 +95,8 @@ inputBuscaPokemon.addEventListener('click', () => {
   const muestraPokemon = traerDataPokemon(buscarPokemon((POKEMON), nombrePokemonBuscar));
   generarTemplatePokemones(muestraPokemon);
 });
-// Filtrar Pokemons
+
+
 const desple = document.getElementById('desple');
 desple.addEventListener('click', (event) => {
   const tPokemones = event.target.id;
@@ -118,4 +121,9 @@ btnBuscarTop10.addEventListener('click', () => {
   generarTemplatePokemones(arregloMuestraTop);
 });
 
-console.log (evolucionPokemon(POKEMON));
+const buscaNombre = document.getElementById('buscar');
+buscaNombre.addEventListener('input',(event) => {
+  const pokeBuscado = traerDataPokemon(buscador((POKEMON), event.target.value));
+  document.querySelector('#contenedor-pokemons').innerHTML = '';
+  generarTemplatePokemones(pokeBuscado);
+});
