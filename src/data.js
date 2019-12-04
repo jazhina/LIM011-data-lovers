@@ -8,15 +8,14 @@ export const traerDataPokemon = (arr) => {
       altura: arr[i].height,
       peso: arr[i].weight,
       tipo: arr[i].type,
-      caramelos: arr[i].candy_count,
+      cant_caramelos: arr[i].candy_count,
+      caramelos: arr[i].candy,
       multiplicador: arr[i].multipliers,
       debilidades: arr[i].weaknesses,
       pre_evolucion: arr[i].prev_evolution,
       siguiente_evolucion: arr[i].next_evolution,
-      candyname: arr[i].candy,
     });
   }
-  console.log(newArray[2].candyname);
   return newArray;
 };
 
@@ -28,6 +27,7 @@ export const ordenarAscOdescData = (arr, string) => {
   arr.sort((p1, p2) => ((p1.name > p2.name) ? -1 : 1));
   return arr;
 };
+
 // export const filtrarPokemones = (arr, tPokemones) => {
 //   const arregloFiltradoPokemones = [];
 //   for (let i = 0; i < arr.length; i += 1) {
@@ -39,6 +39,7 @@ export const ordenarAscOdescData = (arr, string) => {
 //   }
 //   return arregloFiltradoPokemones;
 // };
+
 export const filtrarPokemones = (arr, tPokemones) => {
   const arregloFiltradoPokemones = [];
   for (let i = 0; i < arr.length; i += 1) {
@@ -52,34 +53,6 @@ export const filtrarPokemones = (arr, tPokemones) => {
   return arregloFiltradoPokemones;
 };
 
-// export const filtrarPokemones = (arr, tPokemones) => {
-// const arregloFiltradoPokemones = [];
-// for (let i = 0; i < arr.length; i += 1) {
-// const tipoFiltrado = arr[i].type;
-// for (let j = 0; j < tipoFiltrado.length; j += 1){
-// if (tipoFiltrado[j] === tPokemones) {
-// arregloFiltradoPokemones.push(arr[i]);
-// }
-// }
-// }
-// return arregloFiltradoPokemones;
-// };
-
-export const filtrarPokemonesId = (arr, IdNextEvolution) => {
-  const arrFiltradoPokemonesId = [];
-  for (let i = 0; i < arr.length; i += 1) {
-    const next_evolutionFiltrado = arr[i].next_evolution;
-    for (let j = 0; j < next_evolutionFiltrado.length; j += 1){
-    if (next_evolutionFiltrado[j] === IdNextEvolution) {
-      arrFiltradoPokemonesId.push(arr[j]);
-    }
-  }
-}
-console.log(arrFiltradoPokemonesId.push(arr[0]))
-  return arrFiltradoPokemonesId;
- };
-
-
 export const mostrarTop = (arr) => {
   arr.sort((p1, p2) => ((p1.spawn_chance > p2.spawn_chance) ? -1 : 1));
   const arrTop = arr.slice(0, 10);
@@ -92,22 +65,17 @@ export const buscarPokemon = (arr, nombrePokemonBuscar) => {
   return arrBuscaPokemon;
 };
 
-export const buscador = (arr, nombrePokemonBuscar) => {
-return arr.filter((obj) => obj.name.toLowerCase().startsWith(nombrePokemonBuscar));
+export const buscadorPrimerasLetrasNombre = (arr, nombrePokemonBuscar) => {
+  const letras = arr.filter((obj) => obj.name.toLowerCase().startsWith(nombrePokemonBuscar));
+  return letras;
 };
 
 export const filtrarPorCandy = (arr, varCaramelos) => {
   const arrfiltraPokemonPorCandy = [];
-  for(let i=0; i<arr.length; i++){
-    if(arr[i].candy===varCaramelos){
-      arrfiltraPokemonPorCandy.push(arr[i].img)
+  for (let i = 0; i < arr.length; i += 1) {
+    if (arr[i].candy === varCaramelos) {
+      arrfiltraPokemonPorCandy.push(arr[i].img);
     }
   }
   return arrfiltraPokemonPorCandy;
-  
 };
-
-//   let next = data.map(a => a.next_evolution);
-//   console.log(next);
-// };
-
