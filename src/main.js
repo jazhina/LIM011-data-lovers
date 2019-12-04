@@ -28,7 +28,7 @@ const containerElements = (obj) => {
       <h2>${obj.nombre.toUpperCase()}</h2>
       <img class ="imagenPokemon" src = "${obj.imagen}"/>
       </seccion>
-      <seccion>
+      <seccion class = "descripcion">
       <p>Peso: ${obj.peso}  Altura: ${obj.altura} Tipo: ${obj.tipo}</p>
       <p>Caramelos: ${obj.cant_caramelos}</p> 
       <p>Multiplicador: ${obj.multiplicador}</p>

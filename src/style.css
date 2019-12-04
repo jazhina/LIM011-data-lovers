@@ -11,7 +11,7 @@ header{
     width: 25%;
 }
 .flex-container{
-    margin-top: 20px;
+
     display:flex;
     flex-wrap:wrap;   
 }
@@ -269,4 +269,15 @@ h2{
 		float:right;
 		font-size:40px;
 	}
+}
+/* ==== Secciones de evoluciones ===== */
+.descripcion {
+    float: right;
+    border: 1px solid black;
+}
+
+#evoluciones {
+    margin-top: 20px;
+    display:flex;
+    flex-wrap:wrap; 
 }
