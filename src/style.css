@@ -177,7 +177,8 @@ h2{
 	pointer-events: auto;
 }
 .modalDialog > div {
-	width: 600px;
+    width: 500px;
+    height: 400px;
 	position: relative;
 	margin: 10% auto;
 	padding: 5px 20px 13px 20px;
@@ -271,13 +272,32 @@ h2{
 	}
 }
 /* ==== Secciones de evoluciones ===== */
-.descripcion {
-    float: right;
+.NomImagen {
+    float: left;
     border: 1px solid black;
+    width: 240px;
+    height: 180px;
+}
+.descripcion {
+    float: left;
+    border: 1px solid black;
+    width: 240px;
+    height: 180px;
 }
 
 #evoluciones {
     margin-top: 20px;
-    display:flex;
-    flex-wrap:wrap; 
+    display:flex;   
+    border: 1px solid black;
+    justify-content: center;
 }
+.evolucion {
+    width: 480px;
+    float:  left;
+    border: 1px solid black;
+}
+/* .modal {
+    display:block;
+    margin:auto;
+    text-align: center;
+} */

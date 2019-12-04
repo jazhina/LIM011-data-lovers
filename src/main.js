@@ -22,20 +22,25 @@ const containerElements = (obj) => {
     const divElem = document.createElement('div');
     divElem.classList.add('modalDialog');
     divElem.innerHTML = `
-    <div>
+    <div class = "modal">
       <a href = "#close" title = "Close" class = "close">X</a>
-      <seccion>
+      <seccion class = "NomImagen">
       <h2>${obj.nombre.toUpperCase()}</h2>
       <img class ="imagenPokemon" src = "${obj.imagen}"/>
       </seccion>
       <seccion class = "descripcion">
-      <p>Peso: ${obj.peso}  Altura: ${obj.altura} Tipo: ${obj.tipo}</p>
+      <h2>DESCRIPCION</h2>
+      <p>Peso: ${obj.peso}</p>
+      <p>Altura: ${obj.altura}</p>
+      <p>Tipo: ${obj.tipo}</p> 
       <p>Caramelos: ${obj.cant_caramelos}</p> 
       <p>Multiplicador: ${obj.multiplicador}</p>
       </seccion>
       <seccion class="evolucion">
+      <h2>EVOLUCIONES</h2>
       <figure id="evoluciones">
-      </figure></seccion>
+      </figure>
+      </seccion>
     </div> 
     `;
 
